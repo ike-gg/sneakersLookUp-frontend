@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2rem;
+}
+nav > * {
+  opacity: 0.5;
+  transition: 0.15s;
+  cursor: pointer;
+}
+nav > *:hover {
+  opacity: 1;
+}
+.uil-setting:hover {
+  transform: rotate(30deg);
+}

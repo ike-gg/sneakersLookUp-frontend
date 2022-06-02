@@ -1,0 +1,111 @@
+.SearchResult__element {
+  background-color: white;
+  width: 100%;
+  padding: 25px;
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 6px;
+  transition: 0.2s border, box-shadow;
+  box-shadow: 0 0 20px rgba(199, 199, 199, 0.155);
+}
+.SearchResult__element:hover {
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0 0 20px var(--shadow-color);
+}
+.SearchResult__box {
+  display: flex;
+  gap: 30px;
+}
+.SearchResult__iteminfo--stickyContainer {
+  position: sticky;
+  top: 0;
+}
+.SearchResult__iteminfo {
+  position: relative;
+}
+.SearchResult__iteminfo--priceLabel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgb(232, 255, 235);
+  color: rgb(26, 164, 74);
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
+.SearchResult__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #3c6144;
+}
+.SearchResult__desc {
+  margin: 4px 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: rgb(135, 135, 135);
+}
+.SearchResult__sku {
+  margin: 0;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(191, 191, 191);
+}
+.SearchResult__desc--seller {
+  display: inline-block;
+  background-color: var(--shadow-color);
+  padding: 5px 10px;
+  color: var(--primary-color);
+  border-radius: 6px;
+}
+.SearchResult__sales {
+  width: 100%;
+}
+.SearchResult__table {
+  width: 100%;
+  text-align: center;
+  background-color: #fdfdfd;
+  border: 1px solid rgb(233, 233, 233);
+  box-shadow: 0 0 20px #f6f6f6;
+  padding: 10px;
+  border-radius: 8px;
+  border-spacing: 0px;
+}
+
+.SearchResult__table td {
+  padding: 7px 0;
+  color: rgb(98, 98, 98);
+  transition: 0.05s;
+}
+
+.SearchResult__table tr:hover td {
+  background-color: rgb(244, 244, 244);
+  color: rgb(16, 16, 16);
+}
+
+.SearchResult__table th {
+  font-size: 1.1rem;
+  padding: 10px 0;
+  font-weight: 600;
+  color: var(--darken-color);
+  background-color: var(--shadow-color);
+}
+
+tr:first-child th:first-child {
+  border-top-left-radius: 4px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 4px;
+}
+
+@media screen and (max-width: 1750px) {
+  .SearchResult__box {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .SearchResult__box {
+    flex-direction: column;
+  }
+}

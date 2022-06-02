@@ -1,0 +1,71 @@
+:root {
+  --primary-color: #49be65;
+  --secondary-color: #6bca81;
+  --shadow-color: #e2f7e7;
+  --darken-color: #3a9b51;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+h1 {
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+}
+.hidden {
+  visibility: hidden;
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .searchComponent {
+    height: 100vh;
+  }
+}
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 14px;
+  border: 0;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 20px -4px var(--secondary-color);
+  transition: 0.2s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--darken-color);
+}
+button:active {
+  transform: translateY(2px);
+}
+.disabledButton {
+  background-color: rgb(194, 194, 194);
+  box-shadow: 0 0 20px rgb(210, 210, 210);
+  opacity: 0.9;
+  cursor: not-allowed;
+}
+
+.disabledButton:hover {
+  background-color: rgb(150, 150, 150);
+}
+
+.disabledButton:active {
+  transform: translateY(0px);
+  opacity: 0.7;
+}
