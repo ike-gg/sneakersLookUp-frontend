@@ -6,10 +6,13 @@ import SearchResult from "./SearchResult/SearchResult.js";
 
 import data from "./static.json";
 
-const SearchComponent = () => {
+const SearchComponent = (props) => {
+  const { setTrackingItems } = props;
+
   const [search, setSearch] = React.useState("");
-  const [searchResult, setSearchResult] = React.useState({});
+  const [searchResult, setSearchResult] = React.useState(data);
   const [debounceSearch, setDebounceSearch] = React.useState("");
+  const [selectedSize, setSelectedSize] = React.useState("");
 
   const debounceTimeout = () =>
     setTimeout(() => {
@@ -35,6 +38,27 @@ const SearchComponent = () => {
     setDebounceSearch(debounceTimeout());
   };
 
+  const addToTracking = () => {
+    setSelectedSize("");
+    const indexOfSize = searchResult.sizes.findIndex(
+      (size) => size.sizeUS === selectedSize
+    );
+    if (indexOfSize !== -1) {
+      setTrackingItems((prevTrackingItems) => [
+        ...prevTrackingItems,
+        {
+          sku: searchResult.sku,
+          name: searchResult.name,
+          image: searchResult.image,
+          retail: searchResult.retail,
+          colorway: searchResult.colorway,
+          seller: searchResult.seller,
+          size: searchResult.sizes[indexOfSize],
+        },
+      ]);
+    }
+  };
+
   return (
     <section className="searchComponent">
       <Nav />
@@ -46,16 +70,44 @@ const SearchComponent = () => {
           value={search}
           onChange={handleChange}
         />
-        {/* <SearchResult {...data} /> */}
-        {!(JSON.stringify(searchResult) === "{}") && (
-          <SearchResult {...searchResult} />
-        )}
-        {!(JSON.stringify(searchResult) === "{}") && (
-          <div className="searchComponent__trackingButton">
-            <button className="disabledButton">Add it as tracking!</button>
+        {/* <SearchResult
+          {...data}
+          selectedSize={selectedSize}
+          setSelectedSize={setSelectedSize}
+        />
+        <div className="searchComponent__trackingButton">
+          <button
+            className={selectedSize ? "" : "disabledButton"}
+            onClick={addToTracking}
+          >
+            Add it as tracking!
+          </button>
+          {!selectedSize && (
             <div className="searchComponent__trackingWarning">
               Select size before adding it for tracking
             </div>
+          )}
+        </div> */}
+        {!(JSON.stringify(searchResult) === "{}") && (
+          <SearchResult
+            {...searchResult}
+            selectedSize={selectedSize}
+            setSelectedSize={setSelectedSize}
+          />
+        )}
+        {!(JSON.stringify(searchResult) === "{}") && (
+          <div className="searchComponent__trackingButton">
+            <button
+              className={selectedSize ? "" : "disabledButton"}
+              onClick={addToTracking}
+            >
+              Add it as tracking!
+            </button>
+            {!selectedSize && (
+              <div className="searchComponent__trackingWarning">
+                Select size before adding it for tracking
+              </div>
+            )}
           </div>
         )}
       </div>

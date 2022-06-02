@@ -1,14 +1,11 @@
 import React from "react";
 import "./SearchResult.css";
-import Draggable from "react-draggable";
 
 const SearchResult = (props) => {
-  const [selectedSize, setSelectedSize] = React.useState({});
+  const { selectedSize, setSelectedSize } = props;
 
   const handleSelectSize = (event) => {
-    event.preventDefault();
-
-    console.log(event.target);
+    setSelectedSize(event.currentTarget.dataset.size);
   };
 
   return (
@@ -40,12 +37,21 @@ const SearchResult = (props) => {
               </tr>
               {props.sizes.map((size) => {
                 return (
-                  <tr key={props.sku + size.sizeUS} onClick={handleSelectSize}>
-                    <td>
-                      {size.sizeUS} — {size.sizeEU}
+                  <tr
+                    key={props.sku + size.sizeUS}
+                    data-size={size.sizeUS}
+                    onClick={handleSelectSize}
+                    className={
+                      size.sizeUS === selectedSize ? "selectedSize" : ""
+                    }
+                  >
+                    <td className="SearchResult__sizeColumn">
+                      <span>{size.sizeUS}</span>
+                      <span>—</span>
+                      <span>{size.sizeEU}</span>
                     </td>
-                    <td>{size.lowestAsk}€</td>
-                    <td>{size.highestBid}€</td>
+                    <td>{size.lowestAsk ? `${size.lowestAsk} €` : "—"}</td>
+                    <td>{size.highestBid ? `${size.highestBid} €` : "—"}</td>
                   </tr>
                 );
               })}

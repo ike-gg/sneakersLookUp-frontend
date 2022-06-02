@@ -21,15 +21,18 @@
 }
 .SearchResult__iteminfo {
   position: relative;
+  max-width: 40%;
 }
 .SearchResult__iteminfo--priceLabel {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgb(232, 255, 235);
-  color: rgb(26, 164, 74);
+  background-color: rgb(232, 248, 233);
+  color: rgb(46, 129, 75);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0 50%);
   font-weight: 500;
-  padding: 10px;
+  padding: 8px 14px;
+  padding-left: 25px;
   border-radius: 6px;
   font-size: 1.1rem;
 }
@@ -76,6 +79,9 @@
   padding: 7px 0;
   color: rgb(98, 98, 98);
   transition: 0.05s;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-top: 1px solid rgb(235, 235, 235);
 }
 
 .SearchResult__table tr:hover td {
@@ -98,9 +104,39 @@ tr:first-child th:last-child {
   border-top-right-radius: 4px;
 }
 
+.SearchResult__table--header {
+  border-radius: 4px;
+  position: sticky;
+  box-shadow: 0 0 10px var(--shadow-color);
+  top: 0;
+}
+
+.selectedSize td {
+  background-color: var(--whiten-color);
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+.selectedSize > td {
+  color: var(--darken-color);
+  font-weight: 900;
+}
+.selectedSize:hover td {
+  background-color: var(--whiten-color) !important;
+  color: var(--darken-color) !important;
+}
+.SearchResult__sizeColumn {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 @media screen and (max-width: 1750px) {
   .SearchResult__box {
     flex-direction: column;
+  }
+  .SearchResult__iteminfo {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
