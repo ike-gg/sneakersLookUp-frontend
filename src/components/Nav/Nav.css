@@ -11,6 +11,10 @@ nav > * {
 nav > *:hover {
   opacity: 1;
 }
-.uil-setting:hover {
+.nav__settingsButton {
+  display: block;
+  color: black;
+}
+.nav__settingsButton:hover {
   transform: rotate(30deg);
 }

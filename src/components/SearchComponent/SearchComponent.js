@@ -22,7 +22,7 @@ const SearchComponent = (props) => {
           // `https://sneakerslookup-backend.herokuapp.com/api/getProduct/?q=${search}`
           `http://192.168.8.136:3001/api/getProduct/?q=${search}`
         )
-          .then((data) => data.json())
+          .then((response) => response.json())
           .then((data) => {
             setSearchResult(data);
             console.log(JSON.stringify(data));

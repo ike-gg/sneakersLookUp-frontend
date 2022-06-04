@@ -1,0 +1,39 @@
+@keyframes onStart {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.settings__container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.175);
+  /* animation */
+  animation-name: onStart;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+}
+.settings__box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgb(237, 237, 237);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.067);
+}
+.settings__title {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #3c6144;
+}

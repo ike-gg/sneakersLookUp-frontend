@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+
 import "./style.css";
 
 import SearchComponent from "./components/SearchComponent/SearchComponent.js";
@@ -21,6 +23,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <Outlet />
       <TrackComponent
         trackingItems={trackingItems}
         setTrackingItems={setTrackingItems}
