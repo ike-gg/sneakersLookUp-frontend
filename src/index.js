@@ -16,7 +16,6 @@ root.render(
           <Route path=":trackingId" />
         </Route>
       </Route>
-      <Route path="*" element={<div>Lol not exist.</div>}></Route>
     </Routes>
   </BrowserRouter>
 );

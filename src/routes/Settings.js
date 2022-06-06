@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Zoom from "react-reveal/Zoom";
 
 import "./Settings.css";
 
@@ -12,14 +13,16 @@ const Settings = () => {
     }
   };
   return (
-    <section className="settings__container" onClick={closeSettings}>
-      <main className="settings__box">
-        <h1 className="settings__title">Settings</h1>
-        <ul>
-          <li></li>
-        </ul>
-      </main>
-    </section>
+    <Zoom>
+      <section className="settings__container" onClick={closeSettings}>
+        <main className="settings__box">
+          <h1 className="settings__title">Settings</h1>
+          <ul>
+            <li></li>
+          </ul>
+        </main>
+      </section>
+    </Zoom>
   );
 };
 

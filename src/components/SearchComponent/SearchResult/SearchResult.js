@@ -31,7 +31,7 @@ const SearchResult = (props) => {
           <table className="SearchResult__table">
             <tbody>
               <tr className="SearchResult__table--header">
-                <th>Size US — EU</th>
+                <th>US - Size - EU</th>
                 <th>Lowest ASK</th>
                 <th>Highest BID</th>
               </tr>
