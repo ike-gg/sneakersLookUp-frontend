@@ -5,7 +5,7 @@ import "./Nav.css";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className="mainNav">
       <Link to="settings" className="nav__settingsButton">
         <i className="uil uil-setting"></i>
       </Link>

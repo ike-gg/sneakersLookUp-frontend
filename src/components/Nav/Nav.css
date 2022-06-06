@@ -1,14 +1,14 @@
-nav {
+.mainNav {
   display: flex;
   flex-direction: row-reverse;
   font-size: 2rem;
 }
-nav > * {
+.mainNav > * {
   opacity: 0.5;
   transition: 0.15s;
   cursor: pointer;
 }
-nav > *:hover {
+.mainNav > *:hover {
   opacity: 1;
 }
 .nav__settingsButton {

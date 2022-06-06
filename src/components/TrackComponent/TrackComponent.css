@@ -14,6 +14,7 @@
   border-radius: 6px;
   transition: 0.2s;
   cursor: pointer;
+  text-decoration: none;
 }
 .trackComponent__itemCard:hover {
   border: 1px solid var(--secondary-color);

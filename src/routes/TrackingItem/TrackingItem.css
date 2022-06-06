@@ -1,15 +1,4 @@
-@keyframes onStart {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
-.settings__container {
+.trackingItem__container {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -19,21 +8,19 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.175);
+  background-color: rgba(0, 0, 0, 0.29);
+  box-shadow: 0 0 50px 50px rgba(0, 0, 0, 0.296);
   /* animation */
   animation-name: onStart;
   animation-duration: 0.2s;
   animation-fill-mode: both;
 }
-.settings__box {
+
+.trackingItem__box {
   background-color: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 8px;
   border: 1px solid rgb(237, 237, 237);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.067);
-}
-.settings__title {
-  margin: 0;
-  font-size: 1.8rem;
-  color: #3c6144;
+  width: 50vw;
 }
