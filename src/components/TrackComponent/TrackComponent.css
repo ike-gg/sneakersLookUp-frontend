@@ -6,6 +6,25 @@
   align-content: start;
   overflow-y: scroll;
 }
+.trackComponent__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(207, 207, 207);
+  padding: 100px;
+}
+.trackComponent__missingIcon {
+  font-size: 4rem;
+}
+.trackComponent__missingTitle {
+  margin: 10px;
+  font-size: 1.6rem;
+}
+.trackComponent__missingDesc {
+  margin: 10px;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
 .trackComponent__itemCard {
   position: relative;
   border: 1px solid rgb(227, 227, 227);
@@ -57,6 +76,10 @@
   padding: 8px 14px;
   border-radius: 6px;
   font-size: 0.9rem;
+}
+.trackComponent__emptyList {
+  width: 100%;
+  text-align: center;
 }
 
 @media screen and (max-width: 1000px) {

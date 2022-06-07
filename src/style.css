@@ -5,7 +5,23 @@
   --whiten-color: #f5fef7;
   --darken-color: #3a9b51;
 }
-
+::selection {
+  background-color: var(--shadow-color);
+  color: var(--darken-color);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #70d287;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--darken-color);
+}
 @keyframes onStart {
   from {
     opacity: 0;
@@ -43,7 +59,7 @@ h1 {
 }
 
 .likeButton {
-  display: block;
+  display: inline-block;
   text-decoration: none;
 }
 
@@ -58,6 +74,7 @@ button,
   box-shadow: 0 0 20px -4px var(--secondary-color);
   transition: 0.2s;
   cursor: pointer;
+  text-align: center;
 }
 button:hover,
 .likeButton:hover {
@@ -115,4 +132,33 @@ button:active,
   .searchComponent {
     height: 100vh;
   }
+  .smallButton {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.spinning {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+.label {
+  display: inline-block;
+  background-color: var(--shadow-color);
+  padding: 5px 10px;
+  color: var(--primary-color);
+  border-radius: 6px;
+  margin-right: 10px;
 }

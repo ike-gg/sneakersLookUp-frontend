@@ -1,0 +1,36 @@
+.priceLabel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+.priceLabel__typePrice {
+  font-size: 1rem;
+  color: rgb(29, 29, 29);
+  margin-left: 10px;
+  flex-grow: 10;
+}
+.priceLabel__addOn {
+  padding: 7px 15px;
+  border-radius: 6px;
+  color: rgb(105, 105, 105);
+  background-color: rgb(247, 247, 247);
+}
+.priceLabel__live {
+  padding: 7px 15px;
+  border-radius: 6px;
+  color: rgb(105, 105, 105);
+  background-color: rgb(247, 247, 247);
+}
+.priceLabel i {
+  margin-right: 5px;
+}
+.priceLabel__green {
+  background-color: var(--shadow-color);
+  color: var(--darken-color);
+}
+.priceLabel__red {
+  background-color: rgb(255, 241, 241);
+  color: rgb(233, 79, 79);
+}

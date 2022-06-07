@@ -7,8 +7,24 @@ const TrackComponent = (props) => {
   // const { trackingItems, setTrackingItems } = props;
 
   return (
-    <section className="trackComponent">
+    <section
+      className={
+        trackingItems.length === 0 ? "trackComponent__empty" : "trackComponent"
+      }
+    >
+      {trackingItems.length === 0 && (
+        <div className="trackComponent__emptyList">
+          <i className="uil uil-cube trackComponent__missingIcon"></i>
+          <h1 className="trackComponent__missingTitle">
+            Hey! It's look like you didn't add any items to tracking!
+          </h1>
+          <h2 className="trackComponent__missingDesc">
+            You can add any sneakers you want by using the search menu.
+          </h2>
+        </div>
+      )}
       {trackingItems.map((item) => {
+        console.log(item);
         return (
           <Link
             to={`/trackingItem/${item.id}`}

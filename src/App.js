@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 
 import "./style.css";
 
@@ -12,6 +18,11 @@ import TrackingItem from "./routes/TrackingItem/TrackingItem";
 const App = () => {
   const [trackingItems, setTrackingItems] = React.useState([]);
   const [localStorageLoaded, setLocalStorageLoaded] = React.useState(false);
+  // endpoint for api, due to possible limitation of my free-hosted backend on heroku.
+  // can be changed in settings.
+  const [endpointApi, setEndpointApi] = React.useState(
+    "https://sneakerslookup-backend.herokuapp.com"
+  );
 
   useEffect(() => {
     // check if data in localStorage exists, and if so, load it.
@@ -49,13 +60,20 @@ const App = () => {
               <SearchComponent
                 trackingItems={trackingItems}
                 setTrackingItems={setTrackingItems}
+                endpointApi={endpointApi}
               />
             </section>
           }
         >
           <Route
             path="settings"
-            element={<Settings setTrackingItems={setTrackingItems} />}
+            element={
+              <Settings
+                setTrackingItems={setTrackingItems}
+                endpointApi={endpointApi}
+                setEndpointApi={setEndpointApi}
+              />
+            }
           ></Route>
           <Route
             path="trackingItem/:trackingId"
@@ -66,12 +84,13 @@ const App = () => {
                 <TrackingItem
                   trackingItems={trackingItems}
                   setTrackingItems={setTrackingItems}
+                  endpointApi={endpointApi}
                 />
               )
             }
           />
         </Route>
-        <Route path="*" element={<div>Lol not exist.</div>}></Route>
+        <Route path="*" element={<Navigate to="/" replace />}></Route>
       </Routes>
     </BrowserRouter>
   );

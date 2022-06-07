@@ -8,30 +8,57 @@ import data from "./static.json";
 
 const SearchComponent = (props) => {
   const { trackingItems, setTrackingItems } = props;
+  const { endpointApi } = props;
 
   const [search, setSearch] = React.useState("");
-  const [searchResult, setSearchResult] = React.useState(data);
-  const [debounceSearch, setDebounceSearch] = React.useState("");
-  const [selectedSize, setSelectedSize] = React.useState("");
+  const [searchResult, setSearchResult] = React.useState({
+    status: "found",
+    item: data,
+  });
+  const [debounceSearch, setDebounceSearch] = React.useState();
+  const [selectedSize, setSelectedSize] = React.useState();
 
-  const debounceTimeout = () =>
-    setTimeout(() => {
+  const debounceTimeout = () => {
+    return setTimeout(() => {
       if (search.length > 3) {
-        console.log("calling api!");
-        fetch(
-          `https://sneakerslookup-backend.herokuapp.com/api/getProduct/?q=${search}`
-          // `http://192.168.8.136:3001/api/getProduct/?q=${search}`
-        )
+        fetch(`${endpointApi}/api/getProduct/?q=${search}`)
           .then((response) => response.json())
           .then((data) => {
-            setSearchResult(data);
-            console.log(JSON.stringify(data));
+            handleResponse(data);
+          })
+          .catch((error) => {
+            console.error(error);
           });
       }
     }, 400);
+  };
+
+  const handleResponse = (response) => {
+    if (JSON.stringify(response) === "{}") {
+      setSearchResult({
+        status: "empty",
+      });
+    } else {
+      setSearchResult({
+        status: "found",
+        item: response,
+      });
+    }
+  };
 
   const handleChange = (event) => {
     setSearch(event.target.value);
+    if (search.length > 3) {
+      setSearchResult({
+        status: "fetching",
+        item: {},
+      });
+    } else if (search.length <= 3 || search === "") {
+      setSearchResult({
+        status: "more",
+        item: {},
+      });
+    }
     if (debounceSearch) {
       clearTimeout(debounceSearch);
     }
@@ -39,13 +66,21 @@ const SearchComponent = (props) => {
   };
 
   const addToTracking = () => {
-    const indexOfSizeInShoesArray = searchResult.sizes.findIndex(
+    const indexOfSizeInShoesArray = searchResult.item.sizes.findIndex(
       (size) => size.sizeUS === selectedSize
     );
     const idForTrackedItem = trackingItems.length + 1;
     if (indexOfSizeInShoesArray !== -1) {
-      const { sku, name, image, retail, colorway, seller, url } = searchResult;
-      const size = searchResult.sizes[indexOfSizeInShoesArray];
+      const {
+        sku,
+        name,
+        image,
+        retail,
+        colorway,
+        seller,
+        url,
+      } = searchResult.item;
+      const size = searchResult.item.sizes[indexOfSizeInShoesArray];
       setTrackingItems((prevTrackingItems) => [
         ...prevTrackingItems,
         {
@@ -76,27 +111,57 @@ const SearchComponent = (props) => {
           value={search}
           onChange={handleChange}
         />
-        {!(JSON.stringify(searchResult) === "{}") && (
-          <SearchResult
-            {...searchResult}
-            selectedSize={selectedSize}
-            setSelectedSize={setSelectedSize}
-          />
+        {searchResult.status === "found" && (
+          <>
+            <SearchResult
+              {...searchResult.item}
+              selectedSize={selectedSize}
+              setSelectedSize={setSelectedSize}
+            />
+            <div className="searchComponent__trackingButton">
+              <button
+                className={selectedSize ? "" : "disabledButton smallButton"}
+                onClick={addToTracking}
+              >
+                <i className="uil uil-plus"></i> Add it as tracking
+              </button>
+              {!selectedSize && (
+                <div className="searchComponent__trackingWarning smallButton">
+                  Select size before adding it for tracking
+                </div>
+              )}
+            </div>
+          </>
         )}
-        {!(JSON.stringify(searchResult) === "{}") && (
-          <div className="searchComponent__trackingButton">
-            <button
-              className={selectedSize ? "" : "disabledButton"}
-              onClick={addToTracking}
-            >
-              Add it as tracking!
-            </button>
-            {!selectedSize && (
-              <div className="searchComponent__trackingWarning">
-                Select size before adding it for tracking
-              </div>
-            )}
+        {searchResult.status === "empty" && (
+          <div className="searchComponent__info">
+            <i className="uil uil-times searchComponent__icon"></i>
+            <h1 className="searchComponent__textInfo">
+              We didn't find anything with your phrase, please try again.
+            </h1>
           </div>
+        )}
+        {searchResult.status === "fetching" && (
+          <section className="searchComponent__info">
+            <i className="uil uil-sync spinning searchComponent__icon"></i>
+            <h1 className="searchComponent__textInfo">Fetching data..</h1>
+          </section>
+        )}
+        {searchResult.status === "more" && (
+          <section className="searchComponent__info">
+            <i className="uil uil-keyboard searchComponent__icon"></i>
+            <h1 className="searchComponent__textInfo">
+              We need more information! Enter more details.
+            </h1>
+          </section>
+        )}
+        {searchResult.status === "init" && (
+          <section className="searchComponent__info">
+            <i className="uil uil-search-alt searchComponent__icon"></i>
+            <h1 className="searchComponent__textInfo">
+              Feel free to find your sneakers using search box above.
+            </h1>
+          </section>
         )}
       </div>
     </section>

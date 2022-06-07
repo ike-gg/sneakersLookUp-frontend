@@ -14,7 +14,8 @@ const SearchResult = (props) => {
         <div className="SearchResult__iteminfo">
           <div className="SearchResult__iteminfo--stickyContainer">
             <div className="SearchResult__iteminfo--priceLabel">
-              Retail: {props.retail ? `${props.retail} €` : "— €"}
+              <i className="uil uil-pricetag-alt" /> Retail:{" "}
+              {props.retail ? `${props.retail} €` : "— €"}
             </div>
             <img alt="xd" src={props.image}></img>
             <h1 className="SearchResult__title">{props.name}</h1>

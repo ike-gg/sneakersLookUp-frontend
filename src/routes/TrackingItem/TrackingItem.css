@@ -22,5 +22,110 @@
   border-radius: 8px;
   border: 1px solid rgb(237, 237, 237);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.067);
-  width: 50vw;
+  width: 60vw;
+}
+
+.trackingItem__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 30px 0;
+}
+.trackingItem__title {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #3c6144;
+}
+.trackingItem__closeButton {
+  font-size: 1.5rem;
+  opacity: 0.5;
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.trackingItem__closeButton:hover {
+  opacity: 1;
+  background-color: rgb(240, 240, 240);
+}
+.productDetails__image {
+  width: 100%;
+}
+.trackingItem__content {
+  display: flex;
+  justify-content: space-between;
+}
+.trackingItem__fetching {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: rgb(172, 172, 172);
+  width: 100%;
+  font-size: 2rem;
+}
+.trackingItem__fetching p {
+  font-size: 1rem;
+}
+.trackingItem__productDetails,
+.trackingItem__stats {
+  display: flex;
+  flex-direction: column;
+}
+.trackingItem__productDetails {
+  width: 35%;
+}
+.trackingItem__stats {
+  width: 100%;
+}
+.trackingItem__size {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(146, 146, 146);
+  margin: 0;
+}
+.trackingItem__prices {
+  margin: 10px 0;
+}
+.trackingItem__statsContainer {
+  display: flex;
+  flex-direction: column;
+}
+.trackingItems__buttons {
+  text-align: right;
+  margin-top: auto;
+  justify-content: space-between;
+}
+.trackingItems__removeButton {
+  margin-right: 10px;
+}
+@media screen and (max-width: 1000px) {
+  .trackingItem__box {
+    padding: 20px;
+    width: 100vw;
+  }
+  .trackingItem__productDetails {
+    padding: 50px;
+  }
+}
+@media screen and (max-width: 1550px) {
+  .trackingItem__container {
+    position: fixed;
+  }
+  .trackingItem__box {
+    max-height: 100vh;
+  }
+  .trackingItems__buttons {
+    margin-top: 40px;
+  }
+  .trackingItem__content {
+    flex-direction: column-reverse;
+  }
+  .trackingItem__productDetails {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px 50px;
+  }
 }
