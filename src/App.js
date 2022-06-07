@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Outlet,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 import "./style.css";
 
@@ -46,7 +41,7 @@ const App = () => {
   }, [trackingItems]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -92,7 +87,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" replace />}></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
