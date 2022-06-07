@@ -4,7 +4,7 @@ import "./SearchComponent.css";
 import Nav from "../Nav/Nav.js";
 import SearchResult from "./SearchResult/SearchResult.js";
 
-import data from "./static.json";
+// import data from "./static.json";
 
 const SearchComponent = (props) => {
   const { trackingItems, setTrackingItems } = props;
@@ -12,8 +12,8 @@ const SearchComponent = (props) => {
 
   const [search, setSearch] = React.useState("");
   const [searchResult, setSearchResult] = React.useState({
-    status: "found",
-    item: data,
+    status: "init",
+    item: undefined,
   });
   const [debounceSearch, setDebounceSearch] = React.useState();
   const [selectedSize, setSelectedSize] = React.useState();
