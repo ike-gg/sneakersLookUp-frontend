@@ -27,7 +27,8 @@ const Settings = (props) => {
   const changeEndpointAPI = () => {
     const newEndpoint = prompt(
       `Here you can enter new endpoint for API that this app uses.
-You should enter ip with port for example: http://192.1.1.1:3000
+You should enter ip with port for example: 
+http://192.1.1.1:3001 or even http://localhost:3001
 
 Leave prompt blank to restore default settings.`,
       endpointApi
