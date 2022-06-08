@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./TrackComponent.css";
 const TrackComponent = (props) => {
   const { trackingItems } = props;
-  // const { trackingItems, setTrackingItems } = props;
 
   return (
     <section
@@ -24,14 +23,15 @@ const TrackComponent = (props) => {
         </div>
       )}
       {trackingItems.map((item) => {
-        console.log(item);
         return (
           <Link
             to={`/trackingItem/${item.id}`}
             key={item.id}
             className="trackComponent__itemCard"
           >
-            <div className="itemCard__sizeTracking">{`US: ${item.size.sizeUS} – EU: ${item.size.sizeEU}`}</div>
+            <div className="itemCard__sizeTracking">
+              {`US: ${item.size.sizeUS} – EU: ${item.size.sizeEU}`}
+            </div>
             <img className="itemCard__image" src={item.image} alt="sneaker" />
             <h1 className="itemCard__title">{item.name}</h1>
             <h2 className="itemCard__colorway">CW: {item.colorway}</h2>

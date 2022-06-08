@@ -9,9 +9,9 @@ const SearchResult = (props) => {
   };
 
   return (
-    <div className="SearchResult__element">
+    <section className="SearchResult__element">
       <div className="SearchResult__box">
-        <div className="SearchResult__iteminfo">
+        <main className="SearchResult__iteminfo">
           <div className="SearchResult__iteminfo--stickyContainer">
             <div className="SearchResult__iteminfo--priceLabel">
               <i className="uil uil-pricetag-alt" /> Retail:{" "}
@@ -27,8 +27,8 @@ const SearchResult = (props) => {
             </h3>
             <h6 className="SearchResult__sku">SKU: {props.sku}</h6>
           </div>
-        </div>
-        <div className="SearchResult__sales">
+        </main>
+        <main className="SearchResult__sales">
           <table className="SearchResult__table">
             <tbody>
               <tr className="SearchResult__table--header">
@@ -36,10 +36,10 @@ const SearchResult = (props) => {
                 <th>Lowest ASK</th>
                 <th>Highest BID</th>
               </tr>
-              {props.sizes.map((size) => {
+              {props.sizes.map((size, index) => {
                 return (
                   <tr
-                    key={props.sku + size.sizeUS}
+                    key={index}
                     data-size={size.sizeUS}
                     onClick={handleSelectSize}
                     className={
@@ -58,9 +58,9 @@ const SearchResult = (props) => {
               })}
             </tbody>
           </table>
-        </div>
+        </main>
       </div>
-    </div>
+    </section>
   );
 };
 

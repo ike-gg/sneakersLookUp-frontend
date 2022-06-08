@@ -7,8 +7,8 @@ import "./Settings.css";
 const Settings = (props) => {
   const { setTrackingItems } = props;
   const { endpointApi, setEndpointApi } = props;
-  const [apiInfoToggle, setApiInfoToggle] = React.useState(false);
 
+  const [apiInfoToggle, setApiInfoToggle] = React.useState(false);
   const navigate = useNavigate();
 
   const closeSettings = (event) => {
@@ -19,25 +19,23 @@ const Settings = (props) => {
   };
 
   const deleteAllTrackingItems = () => {
-    if (
-      window.confirm("Are you sure you want to delete ALL your tracking items?")
-    ) {
-      setTrackingItems([]);
-    }
-  };
-
-  const toggleAPIinformation = () => {
-    setApiInfoToggle((prevState) => !prevState);
+    const promptMessage =
+      "Are you sure you want to delete ALL your tracking items?";
+    if (window.confirm(promptMessage)) setTrackingItems([]);
   };
 
   const changeEndpointAPI = () => {
     const newEndpoint = prompt(
       `Here you can enter new endpoint for API that this app uses.
-      You should enter ip with port for example:
-      http://192.1.1.1:3000`
+You should enter ip with port for example: http://192.1.1.1:3000
+
+Leave prompt blank to restore default settings.`,
+      endpointApi
     );
     if (newEndpoint) {
       setEndpointApi(newEndpoint);
+    } else {
+      setEndpointApi("https://sneakerslookup-backend.herokuapp.com");
     }
   };
 
@@ -56,7 +54,9 @@ const Settings = (props) => {
             <p>
               Backend source.
               <i
-                onClick={toggleAPIinformation}
+                onClick={() => {
+                  setApiInfoToggle((prevState) => !prevState);
+                }}
                 className="uil uil-info-circle moreInfo"
               />
               (Current: {endpointApi})

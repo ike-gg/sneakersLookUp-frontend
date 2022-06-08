@@ -43,12 +43,12 @@ const PriceLabel = (props) => {
       </div>
       <div className="priceLabel__addOn">
         <i className="uil uil-bookmark" />
-        Add-on price: {addOnPrice} €
+        Add-on price: {addOnPrice ? `${addOnPrice} €` : "—"}
       </div>
       <div className={`${classLabelColor} priceLabel__live`}>
         {icon === "up" && <i className="uil uil-arrow-growth" />}
         {icon === "down" && <i className="uil uil-chart-down" />}
-        Live price: {livePrice} €
+        Live price: {livePrice ? `${livePrice} €` : "—"}
       </div>
     </div>
   );

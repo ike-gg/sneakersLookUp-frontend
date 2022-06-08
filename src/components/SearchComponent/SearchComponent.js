@@ -2,7 +2,8 @@ import React from "react";
 import "./SearchComponent.css";
 
 import Nav from "../Nav/Nav.js";
-import SearchResult from "./SearchResult/SearchResult.js";
+import SearchResult from "./SearchResult/SearchResult";
+import SearchStatus from "./SearchStatus/SearchStatus";
 
 // import data from "./static.json";
 
@@ -10,30 +11,41 @@ const SearchComponent = (props) => {
   const { trackingItems, setTrackingItems } = props;
   const { endpointApi } = props;
 
+  //query of search box
   const [search, setSearch] = React.useState("");
-  const [searchResult, setSearchResult] = React.useState({
-    status: "init",
-    item: undefined,
-  });
+
+  //debounce search api calls to prevent limitation
   const [debounceSearch, setDebounceSearch] = React.useState();
+
+  //size of sneakers selecting
   const [selectedSize, setSelectedSize] = React.useState();
 
-  const debounceTimeout = () => {
+  //results of fetching API with query from search state
+  const [searchResult, setSearchResult] = React.useState({
+    status: "init",
+    item: {},
+  });
+
+  //debounce search api calls to prevent limitation
+  const debounceAPICall = () => {
     return setTimeout(() => {
-      if (search.length > 3) {
-        fetch(`${endpointApi}/api/getProduct/?q=${search}`)
-          .then((response) => response.json())
-          .then((data) => {
-            handleResponse(data);
-          })
-          .catch((error) => {
-            console.error(error);
+      fetch(`${endpointApi}/api/getProduct/?q=${search}`)
+        .then((response) => response.json())
+        .then((data) => {
+          handleResponse(data);
+        })
+        .catch((error) => {
+          console.error(error);
+          setSearchResult({
+            status: "error",
           });
-      }
+        });
     }, 400);
   };
 
+  //handle response from API
   const handleResponse = (response) => {
+    //check if response is empty object
     if (JSON.stringify(response) === "{}") {
       setSearchResult({
         status: "empty",
@@ -46,53 +58,37 @@ const SearchComponent = (props) => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleSearchBox = (event) => {
     setSearch(event.target.value);
     if (search.length > 3) {
       setSearchResult({
         status: "fetching",
         item: {},
       });
+      //check if there is an timeout to be executed,
+      //if so, clear it and make call with new query.
+      if (debounceSearch) clearTimeout(debounceSearch);
+      setDebounceSearch(debounceAPICall());
     } else if (search.length <= 3 || search === "") {
       setSearchResult({
         status: "more",
         item: {},
       });
     }
-    if (debounceSearch) {
-      clearTimeout(debounceSearch);
-    }
-    setDebounceSearch(debounceTimeout());
   };
 
-  const addToTracking = () => {
-    const indexOfSizeInShoesArray = searchResult.item.sizes.findIndex(
+  const addItemToTracking = () => {
+    const indexOfSizeInSizesArray = searchResult.item.sizes.findIndex(
       (size) => size.sizeUS === selectedSize
     );
-    const idForTrackedItem = trackingItems.length + 1;
-    if (indexOfSizeInShoesArray !== -1) {
-      const {
-        sku,
-        name,
-        image,
-        retail,
-        colorway,
-        seller,
-        url,
-      } = searchResult.item;
-      const size = searchResult.item.sizes[indexOfSizeInShoesArray];
+    if (indexOfSizeInSizesArray !== -1) {
+      const idForTrackedItem = trackingItems.length + 1;
+      searchResult.item.size = searchResult.item.sizes[indexOfSizeInSizesArray];
       setTrackingItems((prevTrackingItems) => [
         ...prevTrackingItems,
         {
           id: idForTrackedItem,
-          sku,
-          name,
-          image,
-          retail,
-          colorway,
-          seller,
-          size,
-          url,
+          ...searchResult.item,
         },
       ]);
     }
@@ -109,7 +105,7 @@ const SearchComponent = (props) => {
           className="searchComponent__input"
           placeholder="🔍 Search for sneakers, model, color or even sku!"
           value={search}
-          onChange={handleChange}
+          onChange={handleSearchBox}
         />
         {searchResult.status === "found" && (
           <>
@@ -121,7 +117,7 @@ const SearchComponent = (props) => {
             <div className="searchComponent__trackingButton">
               <button
                 className={selectedSize ? "" : "disabledButton smallButton"}
-                onClick={addToTracking}
+                onClick={addItemToTracking}
               >
                 <i className="uil uil-plus"></i> Add it as tracking
               </button>
@@ -133,35 +129,8 @@ const SearchComponent = (props) => {
             </div>
           </>
         )}
-        {searchResult.status === "empty" && (
-          <div className="searchComponent__info">
-            <i className="uil uil-times searchComponent__icon"></i>
-            <h1 className="searchComponent__textInfo">
-              We didn't find anything with your phrase, please try again.
-            </h1>
-          </div>
-        )}
-        {searchResult.status === "fetching" && (
-          <section className="searchComponent__info">
-            <i className="uil uil-sync spinning searchComponent__icon"></i>
-            <h1 className="searchComponent__textInfo">Fetching data..</h1>
-          </section>
-        )}
-        {searchResult.status === "more" && (
-          <section className="searchComponent__info">
-            <i className="uil uil-keyboard searchComponent__icon"></i>
-            <h1 className="searchComponent__textInfo">
-              We need more information! Enter more details.
-            </h1>
-          </section>
-        )}
-        {searchResult.status === "init" && (
-          <section className="searchComponent__info">
-            <i className="uil uil-search-alt searchComponent__icon"></i>
-            <h1 className="searchComponent__textInfo">
-              Feel free to find your sneakers using search box above.
-            </h1>
-          </section>
+        {!(searchResult.status === "found") && (
+          <SearchStatus search={searchResult.status} />
         )}
       </div>
     </section>

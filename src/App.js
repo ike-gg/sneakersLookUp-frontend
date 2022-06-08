@@ -24,6 +24,13 @@ const App = () => {
     if (localTrackingItems) {
       setTrackingItems(JSON.parse(localTrackingItems));
     }
+
+    const localEndpointApi = localStorage.getItem("endpointAPI");
+    if (localEndpointApi) {
+      setEndpointApi(localEndpointApi);
+    } else {
+      setEndpointApi("https://sneakerslookup-backend.herokuapp.com");
+    }
     // when data from localstorage is loaded, value
     // changes due to preexecuting router function that
     // makes the program crash because the array before
@@ -37,7 +44,9 @@ const App = () => {
     // localStorage will be updated and replaced.
     const stringifyTrackingItems = JSON.stringify(trackingItems);
     localStorage.setItem("trackingItems", stringifyTrackingItems);
-  }, [trackingItems]);
+
+    localStorage.setItem("endpointAPI", endpointApi);
+  }, [trackingItems, endpointApi]);
 
   return (
     <HashRouter>
