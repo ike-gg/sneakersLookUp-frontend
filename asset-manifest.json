@@ -1,13 +1,9 @@
 {
-  "main.css": "/sneakersLookUp-frontend/static/css/main.17985c17.chunk.css",
-  "main.js": "/sneakersLookUp-frontend/static/js/main.fac895a4.chunk.js",
-  "main.js.map": "/sneakersLookUp-frontend/static/js/main.fac895a4.chunk.js.map",
-  "static/js/1.a83a5dfe.chunk.js": "/sneakersLookUp-frontend/static/js/1.a83a5dfe.chunk.js",
-  "static/js/1.a83a5dfe.chunk.js.map": "/sneakersLookUp-frontend/static/js/1.a83a5dfe.chunk.js.map",
+  "main.css": "/sneakersLookUp-frontend/static/css/main.da283cd7.chunk.css",
+  "main.js": "/sneakersLookUp-frontend/static/js/main.0f5428ec.chunk.js",
+  "static/js/1.695ca4a8.chunk.js": "/sneakersLookUp-frontend/static/js/1.695ca4a8.chunk.js",
   "runtime~main.js": "/sneakersLookUp-frontend/static/js/runtime~main.d2ef250a.js",
-  "runtime~main.js.map": "/sneakersLookUp-frontend/static/js/runtime~main.d2ef250a.js.map",
-  "static/css/main.17985c17.chunk.css.map": "/sneakersLookUp-frontend/static/css/main.17985c17.chunk.css.map",
   "index.html": "/sneakersLookUp-frontend/index.html",
-  "precache-manifest.5c85011a5e381742e344cba9152b3c25.js": "/sneakersLookUp-frontend/precache-manifest.5c85011a5e381742e344cba9152b3c25.js",
+  "precache-manifest.51b66c7c560522d86fed40a764147d5b.js": "/sneakersLookUp-frontend/precache-manifest.51b66c7c560522d86fed40a764147d5b.js",
   "service-worker.js": "/sneakersLookUp-frontend/service-worker.js"
 }
