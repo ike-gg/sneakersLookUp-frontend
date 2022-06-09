@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./TrackComponent.css";
+import "./TrackWrapper.css";
 const TrackComponent = (props) => {
   const { trackingItems } = props;
+  const { shoeSizeMetric } = props.userPreferences;
 
   return (
     <section
@@ -14,9 +15,9 @@ const TrackComponent = (props) => {
       {trackingItems.length === 0 && (
         <div className="trackComponent__emptyList">
           <i className="uil uil-cube trackComponent__missingIcon"></i>
-          <h1 className="trackComponent__missingTitle">
+          <h2 className="trackComponent__missingTitle">
             Hey! It's look like you didn't add any items to tracking!
-          </h1>
+          </h2>
           <h2 className="trackComponent__missingDesc">
             You can add any sneakers you want by using the search menu.
           </h2>
@@ -30,10 +31,10 @@ const TrackComponent = (props) => {
             className="trackComponent__itemCard"
           >
             <div className="itemCard__sizeTracking">
-              {`US: ${item.size.sizeUS} – EU: ${item.size.sizeEU}`}
+              {`Size: ${item.size[`size${shoeSizeMetric}`]} ${shoeSizeMetric}`}
             </div>
             <img className="itemCard__image" src={item.image} alt="sneaker" />
-            <h1 className="itemCard__title">{item.name}</h1>
+            <h2 className="itemCard__title">{item.name}</h2>
             <h2 className="itemCard__colorway">CW: {item.colorway}</h2>
             <h3 className="itemCard__sku">{item.sku}</h3>
           </Link>

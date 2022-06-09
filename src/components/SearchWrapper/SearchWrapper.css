@@ -1,6 +1,6 @@
 .searchComponent {
   border-left: 2px solid rgb(245, 245, 245);
-  background: linear-gradient(to right, #fcfcfc, #f7f7f7);
+  background-color: #f7f7f7;
   padding: 25px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -19,9 +19,13 @@
   font-size: 1.1rem;
   width: 100%;
   border: 1px solid rgb(232, 232, 232);
+  box-shadow: 0 0 20px rgb(230, 230, 230);
   border-radius: 6px;
   transition: 0.2s;
   margin: 50px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 .searchComponent__input::placeholder {
   color: rgb(206, 206, 206);
@@ -35,20 +39,6 @@
   box-shadow: 0 0 20px var(--shadow-color);
 }
 
-.searchComponent__trackingButton {
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-  margin-top: 40px;
-  position: sticky;
-  bottom: 0;
-  left: 0;
-}
-.searchComponent__trackingWarning {
-  margin-left: 12px;
-  color: grey;
-  filter: drop-shadow(0 0 15px black);
-}
 @media screen and (max-width: 1000px) {
   .searchComponent__searchBox {
     padding: 0;
@@ -56,9 +46,5 @@
   .searchComponent {
     overflow-y: visible;
     overflow-x: visible;
-  }
-  .searchComponent__trackingButton {
-    bottom: 20px;
-    font-size: 1rem !important;
   }
 }

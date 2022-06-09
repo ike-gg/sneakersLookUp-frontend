@@ -1,29 +1,32 @@
-import React from "react";
-import "./SearchComponent.css";
+import React, { useState } from "react";
+import "./SearchWrapper.css";
 
 import Nav from "../Nav/Nav.js";
 import SearchResult from "./SearchResult/SearchResult";
 import SearchStatus from "./SearchStatus/SearchStatus";
+import TrackingButton from "./TrackingButton/TrackingButton";
 
-// import data from "./static.json";
+//static data development
+import data from "./static.json";
 
 const SearchComponent = (props) => {
   const { trackingItems, setTrackingItems } = props;
   const { endpointApi } = props;
+  const { userPreferences } = props;
 
   //query of search box
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = useState("");
 
   //debounce search api calls to prevent limitation
-  const [debounceSearch, setDebounceSearch] = React.useState();
+  const [debounceSearch, setDebounceSearch] = useState();
 
   //size of sneakers selecting
-  const [selectedSize, setSelectedSize] = React.useState();
+  const [selectedSize, setSelectedSize] = useState();
 
   //results of fetching API with query from search state
-  const [searchResult, setSearchResult] = React.useState({
-    status: "init",
-    item: {},
+  const [searchResult, setSearchResult] = useState({
+    status: "found",
+    item: data,
   });
 
   //debounce search api calls to prevent limitation
@@ -61,15 +64,16 @@ const SearchComponent = (props) => {
   const handleSearchBox = (event) => {
     setSearch(event.target.value);
     if (search.length > 3) {
+      if (debounceSearch) clearTimeout(debounceSearch);
       setSearchResult({
         status: "fetching",
         item: {},
       });
       //check if there is an timeout to be executed,
       //if so, clear it and make call with new query.
-      if (debounceSearch) clearTimeout(debounceSearch);
       setDebounceSearch(debounceAPICall());
     } else if (search.length <= 3 || search === "") {
+      if (debounceSearch) clearTimeout(debounceSearch);
       setSearchResult({
         status: "more",
         item: {},
@@ -113,20 +117,12 @@ const SearchComponent = (props) => {
               {...searchResult.item}
               selectedSize={selectedSize}
               setSelectedSize={setSelectedSize}
+              userPreferences={userPreferences}
             />
-            <div className="searchComponent__trackingButton">
-              <button
-                className={selectedSize ? "" : "disabledButton smallButton"}
-                onClick={addItemToTracking}
-              >
-                <i className="uil uil-plus"></i> Add it as tracking
-              </button>
-              {!selectedSize && (
-                <div className="searchComponent__trackingWarning smallButton">
-                  Select size before adding it for tracking
-                </div>
-              )}
-            </div>
+            <TrackingButton
+              addItemToTracking={addItemToTracking}
+              selectedSize={selectedSize}
+            />
           </>
         )}
         {!(searchResult.status === "found") && (

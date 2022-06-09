@@ -12,7 +12,7 @@ const SearchStatus = (props) => {
   return (
     <div className="searchStatus__info">
       {icon}
-      <h1 className="searchStatus__textInfo">{text}</h1>
+      <h2 className="searchStatus__textInfo">{text}</h2>
     </div>
   );
 };

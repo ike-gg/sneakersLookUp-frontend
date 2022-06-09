@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Fade from "react-reveal/Fade";
+
+import SizeMetric from "./SizeMetric/SizeMetric";
 
 import "./Settings.css";
 
 const Settings = (props) => {
   const { setTrackingItems } = props;
   const { endpointApi, setEndpointApi } = props;
+  const { userPreferences, setUserPreferences } = props;
 
-  const [apiInfoToggle, setApiInfoToggle] = React.useState(false);
+  const [apiInfoToggle, setApiInfoToggle] = useState(false);
   const navigate = useNavigate();
 
   const closeSettings = (event) => {
@@ -84,6 +86,10 @@ Leave prompt blank to restore default settings.`,
               </p>
             </li>
           )}
+          <SizeMetric
+            setUserPreferences={setUserPreferences}
+            userPreferences={userPreferences}
+          />
           <li>
             <p>Visit author GitHub.</p>
             <a

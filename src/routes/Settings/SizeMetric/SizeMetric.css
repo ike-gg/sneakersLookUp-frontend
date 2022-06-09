@@ -1,0 +1,7 @@
+.sizeMetric__radioContainer {
+  display: flex;
+  gap: 5px;
+}
+.sizeMetric__radio {
+  margin: 0 3px 0 0;
+}

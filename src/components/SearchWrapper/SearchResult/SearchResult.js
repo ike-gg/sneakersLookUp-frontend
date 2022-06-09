@@ -3,6 +3,7 @@ import "./SearchResult.css";
 
 const SearchResult = (props) => {
   const { selectedSize, setSelectedSize } = props;
+  const { shoeSizeMetric } = props.userPreferences;
 
   const handleSelectSize = (event) => {
     setSelectedSize(event.currentTarget.dataset.size);
@@ -17,8 +18,8 @@ const SearchResult = (props) => {
               <i className="uil uil-pricetag-alt" /> Retail:{" "}
               {props.retail ? `${props.retail} €` : "— €"}
             </div>
-            <img alt="xd" src={props.image}></img>
-            <h1 className="SearchResult__title">{props.name}</h1>
+            <img alt="sneakers preview" src={props.image}></img>
+            <h2 className="SearchResult__title">{props.name}</h2>
             <h3 className="SearchResult__desc">
               <div className="SearchResult__desc--seller">
                 By {props.seller}
@@ -32,7 +33,7 @@ const SearchResult = (props) => {
           <table className="SearchResult__table">
             <tbody>
               <tr className="SearchResult__table--header">
-                <th>US - Size - EU</th>
+                <th>Size {shoeSizeMetric}</th>
                 <th>Lowest ASK</th>
                 <th>Highest BID</th>
               </tr>
@@ -47,9 +48,7 @@ const SearchResult = (props) => {
                     }
                   >
                     <td className="SearchResult__sizeColumn">
-                      <span>{size.sizeUS}</span>
-                      <span>—</span>
-                      <span>{size.sizeEU}</span>
+                      <span>{size[`size${shoeSizeMetric}`]}</span>
                     </td>
                     <td>{size.lowestAsk ? `${size.lowestAsk} €` : "—"}</td>
                     <td>{size.highestBid ? `${size.highestBid} €` : "—"}</td>

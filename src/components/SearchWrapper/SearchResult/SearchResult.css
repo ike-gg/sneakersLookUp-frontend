@@ -17,7 +17,7 @@
 }
 .SearchResult__iteminfo--stickyContainer {
   position: sticky;
-  top: 0;
+  top: 65px;
 }
 .SearchResult__iteminfo {
   position: relative;
@@ -106,7 +106,7 @@ tr:first-child th:last-child {
   border-radius: 4px;
   position: sticky;
   box-shadow: 0 0 10px var(--shadow-color);
-  top: 0;
+  top: 65px;
 }
 
 .selectedSize td {
