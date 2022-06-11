@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./SearchWrapper.css";
 
-import Nav from "../Nav/Nav.js";
+import NavBar from "./NavBar/NavBar";
 import SearchResult from "./SearchResult/SearchResult";
 import SearchStatus from "./SearchStatus/SearchStatus";
 import TrackingButton from "./TrackingButton/TrackingButton";
 
+import EssentialsContext from "../../context/EssentialsContext";
+
 //static data development
 import data from "./static.json";
 
-const SearchComponent = (props) => {
-  const { trackingItems, setTrackingItems } = props;
-  const { endpointApi } = props;
-  const { userPreferences } = props;
+const SearchComponent = () => {
+  const {
+    trackingItems,
+    setTrackingItems,
+    endpointApi,
+    userPreferences,
+  } = useContext(EssentialsContext);
 
   //query of search box
   const [search, setSearch] = useState("");
@@ -102,7 +107,7 @@ const SearchComponent = (props) => {
 
   return (
     <section className="searchComponent">
-      <Nav />
+      <NavBar />
       <div className="searchComponent__searchBox">
         <input
           type="text"
@@ -114,10 +119,9 @@ const SearchComponent = (props) => {
         {searchResult.status === "found" && (
           <>
             <SearchResult
-              {...searchResult.item}
+              item={searchResult.item}
               selectedSize={selectedSize}
               setSelectedSize={setSelectedSize}
-              userPreferences={userPreferences}
             />
             <TrackingButton
               addItemToTracking={addItemToTracking}

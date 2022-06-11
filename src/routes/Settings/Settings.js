@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-import SizeMetric from "./SizeMetric/SizeMetric";
 
 import "./Settings.css";
 
+import SizeMetric from "./SizeMetric/SizeMetric";
+import Currency from "./Currency/Currency";
+
+import EssentialsContext from "../../context/EssentialsContext.js";
+
 const Settings = (props) => {
-  const { setTrackingItems } = props;
-  const { endpointApi, setEndpointApi } = props;
-  const { userPreferences, setUserPreferences } = props;
+  const {
+    setTrackingItems,
+    endpointApi,
+    setEndpointApi,
+    userPreferences,
+    setUserPreferences,
+  } = useContext(EssentialsContext);
 
   const [apiInfoToggle, setApiInfoToggle] = useState(false);
   const navigate = useNavigate();
@@ -86,10 +93,8 @@ Leave prompt blank to restore default settings.`,
               </p>
             </li>
           )}
-          <SizeMetric
-            setUserPreferences={setUserPreferences}
-            userPreferences={userPreferences}
-          />
+          <SizeMetric />
+          <Currency />
           <li>
             <p>Visit author GitHub.</p>
             <a

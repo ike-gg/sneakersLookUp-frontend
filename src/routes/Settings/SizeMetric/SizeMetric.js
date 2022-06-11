@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./SizeMetric.css";
 
+import EssentialsContext from "../../../context/EssentialsContext";
+
 const SizeMetric = (props) => {
-  const { userPreferences, setUserPreferences } = props;
+  const { userPreferences, setUserPreferences } = useContext(EssentialsContext);
 
   const handleSizeSelect = (event) => {
     const newMetricSettings = event.target.id;
@@ -17,7 +19,7 @@ const SizeMetric = (props) => {
 
   return (
     <li>
-      <p>Shoe size metrics.</p>
+      <p>Set shoe size metrics.</p>
       <div className="sizeMetric__radioContainer">
         <label
           className="likeButton smallButton infoButton settings__labelRadio"

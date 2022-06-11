@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
-import PriceLabel from "./PriceLabel/PriceLabel";
 
 import "./TrackingItem.css";
 
-const TrackingItem = (props) => {
-  const { trackingItems, setTrackingItems } = props;
-  const { shoeSizeMetric } = props.userPreferences;
+import PriceLabel from "./PriceLabel/PriceLabel";
 
-  const { endpointApi } = props;
+import EssentialsContext from "../../context/EssentialsContext";
+
+const TrackingItem = () => {
+  const {
+    trackingItems,
+    setTrackingItems,
+    userPreferences,
+    endpointApi,
+  } = useContext(EssentialsContext);
+  const { shoeSizeMetric } = userPreferences;
 
   const [liveData, setLiveData] = useState(false);
   const params = useParams();

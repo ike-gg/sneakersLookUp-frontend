@@ -1,0 +1,32 @@
+.ProductPreview__iteminfo {
+  position: relative;
+}
+.ProductPreview__image {
+  width: 100%;
+  mix-blend-mode: darken;
+}
+.ProductPreview__title {
+  margin: 0;
+  font-size: 1.5em;
+  color: #3c6144;
+}
+.ProductPreview__desc {
+  margin: 4px 0;
+  font-size: 1.15em;
+  font-weight: 500;
+  color: rgb(135, 135, 135);
+}
+.ProductPreview__desc--seller {
+  display: inline-block;
+  background-color: var(--shadow-color);
+  padding: 5px 10px;
+  color: var(--primary-color);
+  border-radius: 6px;
+}
+.ProductPreview__sku {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 1em;
+  font-weight: 500;
+  color: rgb(191, 191, 191);
+}

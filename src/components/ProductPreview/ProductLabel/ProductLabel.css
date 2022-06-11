@@ -1,0 +1,11 @@
+.ProductLabel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgb(232, 248, 233);
+  color: rgb(46, 129, 75);
+  font-weight: 500;
+  padding: 8px 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+}

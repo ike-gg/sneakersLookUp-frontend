@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import "./SearchResult.css";
 
+import ProductPreview from "../../ProductPreview/ProductPreview";
+
+import EssentialsContext from "../../../context/EssentialsContext";
+
 const SearchResult = (props) => {
-  const { selectedSize, setSelectedSize } = props;
-  const { shoeSizeMetric } = props.userPreferences;
+  const { selectedSize, setSelectedSize, item } = props;
+  const { currencyRates, userPreferences } = useContext(EssentialsContext);
+  const { shoeSizeMetric, currency } = userPreferences;
 
   const handleSelectSize = (event) => {
     setSelectedSize(event.currentTarget.dataset.size);
@@ -12,23 +18,7 @@ const SearchResult = (props) => {
   return (
     <section className="SearchResult__element">
       <div className="SearchResult__box">
-        <main className="SearchResult__iteminfo">
-          <div className="SearchResult__iteminfo--stickyContainer">
-            <div className="SearchResult__iteminfo--priceLabel">
-              <i className="uil uil-pricetag-alt" /> Retail:{" "}
-              {props.retail ? `${props.retail} €` : "— €"}
-            </div>
-            <img alt="sneakers preview" src={props.image}></img>
-            <h2 className="SearchResult__title">{props.name}</h2>
-            <h3 className="SearchResult__desc">
-              <div className="SearchResult__desc--seller">
-                By {props.seller}
-              </div>{" "}
-              CW: {props.colorway}
-            </h3>
-            <h6 className="SearchResult__sku">SKU: {props.sku}</h6>
-          </div>
-        </main>
+        <ProductPreview product={item} labelType="size" />
         <main className="SearchResult__sales">
           <table className="SearchResult__table">
             <tbody>
@@ -37,7 +27,12 @@ const SearchResult = (props) => {
                 <th>Lowest ASK</th>
                 <th>Highest BID</th>
               </tr>
-              {props.sizes.map((size, index) => {
+              {item.sizes.map((size, index) => {
+                let { lowestAsk, highestBid } = size;
+                if (currencyRates[currency]) {
+                  lowestAsk *= currencyRates[currency].toFixed(2);
+                  highestBid *= currencyRates[currency].toFixed(2);
+                }
                 return (
                   <tr
                     key={index}
@@ -50,8 +45,24 @@ const SearchResult = (props) => {
                     <td className="SearchResult__sizeColumn">
                       <span>{size[`size${shoeSizeMetric}`]}</span>
                     </td>
-                    <td>{size.lowestAsk ? `${size.lowestAsk} €` : "—"}</td>
-                    <td>{size.highestBid ? `${size.highestBid} €` : "—"}</td>
+                    <td>
+                      {lowestAsk
+                        ? `${lowestAsk} ${(
+                            <span className="SearchResult__currency">
+                              {currency}
+                            </span>
+                          )}`
+                        : "—"}
+                    </td>
+                    <td>
+                      {highestBid
+                        ? `${highestBid} ${(
+                            <span className="SearchResult__currency">
+                              {currency}
+                            </span>
+                          )}`
+                        : "—"}
+                    </td>
                   </tr>
                 );
               })}
