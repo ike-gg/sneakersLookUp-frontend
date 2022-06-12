@@ -6,7 +6,7 @@
   align-content: start;
   overflow-y: scroll;
 }
-.trackWrapper__empty {
+.trackWrapper--empty {
   display: flex;
   align-items: center;
   justify-content: center;
