@@ -1,0 +1,13 @@
+.SearchResult__sales {
+  width: 100%;
+}
+.SearchResult__table {
+  width: 100%;
+  text-align: center;
+  background-color: #fdfdfd;
+  border: 1px solid rgb(233, 233, 233);
+  box-shadow: 0 0 20px #f6f6f6;
+  padding: 10px;
+  border-radius: 8px;
+  border-spacing: 0px;
+}
