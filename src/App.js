@@ -43,7 +43,7 @@ const App = () => {
       setCurrencyRates(data);
     };
     fetchExcangeRates();
-    setInterval(fetchExcangeRates, 1000 * 30);
+    setInterval(fetchExcangeRates, 1000 * 60 * 10);
 
     //load all data from localstorage
     const localTrackingItems = localStorage.getItem("trackingItems");

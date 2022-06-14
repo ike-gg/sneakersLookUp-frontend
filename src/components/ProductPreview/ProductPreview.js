@@ -4,11 +4,18 @@ import "./ProductPreview.css";
 
 import ProductLabel from "./ProductLabel/ProductLabel";
 
-const ProductPreview = ({ product, labelType, fontSize }) => {
+const ProductPreview = ({ product, labelType, fontSize, sticky }) => {
   const { retail, image, name, seller, colorway, sku } = product;
 
   return (
-    <main className="ProductPreview__iteminfo" style={{ fontSize }}>
+    <main
+      className={
+        sticky
+          ? "ProductPreview__iteminfo ProductPreview__stickyContainer"
+          : "ProductPreview__iteminfo"
+      }
+      style={{ fontSize }}
+    >
       <ProductLabel product={product} labelType={labelType} />
       <img
         className="ProductPreview__image"

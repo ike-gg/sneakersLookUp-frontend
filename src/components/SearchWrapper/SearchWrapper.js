@@ -61,6 +61,7 @@ const SearchComponent = () => {
             />
           </>
         )}
+        {/* if status is different than found */}
         {!(searchResult.status === "found") && (
           <SearchStatus search={searchResult.status} />
         )}

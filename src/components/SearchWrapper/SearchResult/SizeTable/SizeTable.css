@@ -1,7 +1,7 @@
-.SearchResult__sales {
+.SalesTable {
   width: 100%;
 }
-.SearchResult__table {
+.SalesTable__container {
   width: 100%;
   text-align: center;
   background-color: #fdfdfd;
@@ -10,4 +10,53 @@
   padding: 10px;
   border-radius: 8px;
   border-spacing: 0px;
+}
+
+.SalesTable__header {
+  position: sticky;
+  top: 64px;
+  background-color: var(--shadow-color);
+  color: var(--darken-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border-bottom: none !important;
+}
+.SalesTable__header,
+.SalesTable__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 15px 0;
+  border: 2px solid transparent;
+}
+.SalesTable__row {
+  background: transparent;
+  z-index: 1;
+  transition: 0.5s background-color;
+  cursor: pointer;
+}
+.SalesTable__body--ask,
+.SalesTable__body--bid {
+  text-align: right;
+  padding-right: 15px;
+}
+.SalesTable__row:not(:last-child) {
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+.SalesTable__row--selected {
+  border: 2px solid var(--primary-color) !important;
+  border-radius: 4px;
+  background-color: var(--whiten-color) !important;
+  color: var(--darken-color) !important;
+  font-weight: 600;
+}
+.SalesTable__row--selected .SalesTable__currency {
+  color: var(--secondary-color);
+}
+.SalesTable__row:hover {
+  background-color: rgb(247, 247, 247);
+}
+.SalesTable__currency {
+  font-size: 0.8rem;
+  color: rgb(142, 142, 142);
 }

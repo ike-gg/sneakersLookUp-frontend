@@ -1,6 +1,10 @@
 .ProductPreview__iteminfo {
   position: relative;
 }
+.ProductPreview__stickyContainer {
+  position: sticky;
+  top: 64px;
+}
 .ProductPreview__image {
   width: 100%;
   mix-blend-mode: darken;

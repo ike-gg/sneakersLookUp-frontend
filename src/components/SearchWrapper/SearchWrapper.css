@@ -2,9 +2,7 @@
   border-left: 2px solid rgb(245, 245, 245);
   background-color: #f7f7f7;
   padding: 25px;
-  overflow-y: scroll;
   overflow-x: hidden;
-  position: relative;
 }
 .searchComponent__searchBox {
   display: flex;
