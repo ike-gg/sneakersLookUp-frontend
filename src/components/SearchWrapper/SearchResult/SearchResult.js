@@ -19,9 +19,12 @@ const SearchResult = (props) => {
   return (
     <section className="SearchResult__element">
       <div className="SearchResult__box">
-        <div className="SearchResult__productStickyContainer">
-          <ProductPreview product={item} labelType="retail" sticky />
-        </div>
+        <ProductPreview
+          product={item}
+          labelType="retail"
+          fontSize={"0.95rem"}
+          sticky
+        />
         <SizeTable
           sizes={item.sizes}
           selectedSize={selectedSize}

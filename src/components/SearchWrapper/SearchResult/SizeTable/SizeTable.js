@@ -27,9 +27,9 @@ const SizeTable = ({ sizes, selectedSize, setSelectedSize }) => {
     <main className="SalesTable">
       <section className="SalesTable__container">
         <div className="SalesTable__header">
-          <div className="SalesTable__header--cell">Size {shoeSizeMetric}</div>
-          <div className="SalesTable__header--cell">Lowest ASK</div>
-          <div className="SalesTable__header--cell">Highest BID</div>
+          <div>Size {shoeSizeMetric}</div>
+          <div>Lowest ASK</div>
+          <div>Highest BID</div>
         </div>
         {sizes.map((size, index) => {
           const lowestAsk = exchangeCurrency(size.lowestAsk);

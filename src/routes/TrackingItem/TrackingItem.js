@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./TrackingItem.css";
 
 import PriceLabel from "./PriceLabel/PriceLabel";
+import ProductPreview from "../../components/ProductPreview/ProductPreview";
 
 import EssentialsContext from "../../context/EssentialsContext";
 
@@ -71,15 +72,7 @@ const TrackingItem = () => {
     <section className="trackingItem__container" onClick={closePopUp}>
       <main className="trackingItem__box">
         <div className="trackingItem__content">
-          <section className="trackingItem__productDetails">
-            <img src={image} className="productDetails__image" alt="sneaker" />
-            <h2 className="itemCard__title">{name}</h2>
-            <h3 className="SearchResult__desc">
-              <div className="SearchResult__desc--seller">By {seller}</div> CW:{" "}
-              {colorway}
-            </h3>
-            <h3 className="itemCard__sku">{sku}</h3>
-          </section>
+          <ProductPreview product={currentItem} labelType="size" />
           <section className="trackingItem__statsContainer">
             <nav className="trackingItem__nav">
               <h1 className="trackingItem__title">{name}</h1>

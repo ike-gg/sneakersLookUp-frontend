@@ -15,37 +15,38 @@
 .SalesTable__header {
   position: sticky;
   top: 64px;
-  background-color: var(--shadow-color);
-  color: var(--darken-color);
+  color: rgb(60, 97, 68);
+  background-color: #fdfdfd;
+  border: 1px solid rgb(208, 217, 206);
+  box-shadow: 0 0 10px rgb(238, 238, 238);
   font-weight: 600;
   font-size: 1.1rem;
   border-radius: 6px;
-  border-bottom: none !important;
 }
 .SalesTable__header,
 .SalesTable__row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 15px 0;
-  border: 2px solid transparent;
 }
 .SalesTable__row {
   background: transparent;
   z-index: 1;
-  transition: 0.5s background-color;
+  transition: 0.1s;
   cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 .SalesTable__body--ask,
 .SalesTable__body--bid {
   text-align: right;
   padding-right: 15px;
 }
-.SalesTable__row:not(:last-child) {
-  border-bottom: 1px solid rgb(226, 226, 226);
+.SalesTable__row:nth-child(odd) {
+  background-color: rgb(247, 247, 247);
 }
 .SalesTable__row--selected {
-  border: 2px solid var(--primary-color) !important;
-  border-radius: 4px;
+  border: 1px solid var(--primary-color) !important;
   background-color: var(--whiten-color) !important;
   color: var(--darken-color) !important;
   font-weight: 600;
@@ -54,7 +55,7 @@
   color: var(--secondary-color);
 }
 .SalesTable__row:hover {
-  background-color: rgb(247, 247, 247);
+  border: 1px dashed gray;
 }
 .SalesTable__currency {
   font-size: 0.8rem;
