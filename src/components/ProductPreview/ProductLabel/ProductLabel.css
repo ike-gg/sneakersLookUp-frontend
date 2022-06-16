@@ -1,7 +1,7 @@
 .ProductLabel {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -5px;
+  right: -5px;
   background-color: rgb(232, 248, 233);
   color: rgb(46, 129, 75);
   font-weight: 500;

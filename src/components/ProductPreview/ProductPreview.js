@@ -10,23 +10,20 @@ const ProductPreview = ({ product, labelType, fontSize, sticky }) => {
   let classForContainer;
 
   if (sticky) {
-    classForContainer = "ProductPreview__stickyContainer";
+    classForContainer = "SearchResult__productStickyContainer";
   } else {
     classForContainer = "ProductPreview__relativeContainer";
   }
 
   return (
     <div>
-      <main
-        className="SearchResult__productStickyContainer"
-        style={{ fontSize }}
-      >
+      <main className={classForContainer} style={{ fontSize }}>
         <ProductLabel product={product} labelType={labelType} />
         <img
           className="ProductPreview__image"
           alt="sneakers preview"
           src={image}
-        ></img>
+        />
         <h2 className="ProductPreview__title">{name}</h2>
         <h3 className="ProductPreview__desc">
           <span className="ProductPreview__desc--seller">By {seller}</span>{" "}

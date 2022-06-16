@@ -54,6 +54,9 @@ const TrackingItem = () => {
         } else {
           setLiveData(null);
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 

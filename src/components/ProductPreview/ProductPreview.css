@@ -1,5 +1,5 @@
 .ProductPreview__relativeContainer {
-  position: static;
+  position: relative;
 }
 .SearchResult__productStickyContainer {
   position: sticky;

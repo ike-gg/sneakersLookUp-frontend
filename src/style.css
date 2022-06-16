@@ -90,6 +90,7 @@ button,
 button:hover,
 .likeButton:hover {
   background-color: var(--darken-color);
+  transform: scale(95%);
 }
 button:active,
 .likeButton:active {
