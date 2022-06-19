@@ -5,45 +5,30 @@ import "./TrackingItem.css";
 
 import PriceLabel from "./PriceLabel/PriceLabel";
 import ProductPreview from "../../components/ProductPreview/ProductPreview";
+import ActionButtons from "./ActionButtons/ActionButtons";
+import NavBar from "./NavBar/NavBar";
 
 import EssentialsContext from "../../context/EssentialsContext";
 
 const TrackingItem = () => {
+  const navigate = useNavigate();
   const {
     trackingItems,
     setTrackingItems,
     userPreferences,
     endpointApi,
   } = useContext(EssentialsContext);
+
   const { shoeSizeMetric } = userPreferences;
 
   const [liveData, setLiveData] = useState(false);
   const params = useParams();
-  const navigate = useNavigate();
 
   const currentItem = trackingItems.find(
     (item) => item.id === parseInt(params.trackingId, 10)
   );
 
-  const {
-    id,
-    sku,
-    name,
-    image,
-    retail,
-    colorway,
-    seller,
-    size,
-    url,
-  } = currentItem;
-
-  const closePopUp = (event) => {
-    const { currentTarget, target } = event;
-    // check if thats right element to trigger a function
-    if (currentTarget === target) {
-      navigate("/", { replace: true });
-    }
-  };
+  const { sku, name, retail, size } = currentItem;
 
   React.useEffect(() => {
     fetch(`${endpointApi}/api/getProduct/?q=${sku}`)
@@ -60,13 +45,9 @@ const TrackingItem = () => {
       });
   }, []);
 
-  const handleRemove = () => {
-    if (window.confirm(`Are you sure you want to delete ${name} item?`)) {
-      setTrackingItems((prevState) => {
-        const indexOfItem = prevState.findIndex((items) => items.id === id);
-        prevState.splice(indexOfItem, 1);
-        return [...prevState];
-      });
+  const closePopUp = (event) => {
+    const { currentTarget, target } = event;
+    if (currentTarget === target) {
       navigate("/", { replace: true });
     }
   };
@@ -77,13 +58,7 @@ const TrackingItem = () => {
         <div className="trackingItem__content">
           <ProductPreview product={currentItem} labelType="size" />
           <section className="trackingItem__statsContainer">
-            <nav className="trackingItem__nav">
-              <h1 className="trackingItem__title">{name}</h1>
-              <i
-                className="uil uil-multiply trackingItem__closeButton"
-                onClick={closePopUp}
-              />
-            </nav>
+            <NavBar name={name} closePopUp={closePopUp} />
             {!liveData && (
               <section className="trackingItem__fetching">
                 <i className="uil uil-sync spinning"></i>
@@ -107,22 +82,7 @@ const TrackingItem = () => {
                 </section>
               </>
             )}
-            <div className="trackingItems__buttons">
-              <button
-                onClick={handleRemove}
-                className="smallButton dangerButton trackingItems__removeButton"
-              >
-                Remove item <i className="uil uil-trash-alt"></i>
-              </button>
-              <a
-                className="smallButton likeButton"
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Link to StockX <i className="uil uil-external-link-alt"></i>
-              </a>
-            </div>
+            <ActionButtons item={currentItem} />
           </section>
         </div>
       </main>

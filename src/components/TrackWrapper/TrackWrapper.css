@@ -39,7 +39,7 @@
   border: 1px solid var(--secondary-color);
   box-shadow: 0 0 20px var(--shadow-color);
   /* background-color: rgb(250, 250, 250); */
-  background-color: var(--whiten-color);
+  background-color: rgb(247, 255, 247);
   transform: translateY(-2px);
 }
 .itemCard__image {

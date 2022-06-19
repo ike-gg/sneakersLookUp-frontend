@@ -39,9 +39,7 @@ const App = () => {
   useEffect(() => {
     localStoredStates.forEach(([nameState, state, setState]) => {
       const storedState = localStorage.getItem(nameState);
-      console.log(`${nameState} = ${storedState}`);
       if (storedState) {
-        console.log(nameState + "passed");
         setState(JSON.parse(storedState));
       }
     });

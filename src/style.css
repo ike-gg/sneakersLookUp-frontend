@@ -30,6 +30,21 @@
 @keyframes onStart {
   from {
     opacity: 0;
+    transform: scale(95%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}
+.onStartDown {
+  animation-name: onStartDown;
+  animation-duration: 0.15s;
+  animation-fill-mode: both;
+}
+@keyframes onStartDown {
+  from {
+    opacity: 0;
     transform: translateY(-20px);
   }
   to {
@@ -90,11 +105,10 @@ button,
 button:hover,
 .likeButton:hover {
   background-color: var(--darken-color);
-  transform: scale(95%);
 }
 button:active,
 .likeButton:active {
-  transform: translateY(2px);
+  transform: scale(95%);
 }
 .disabledButton {
   background-color: rgb(194, 194, 194);

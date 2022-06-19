@@ -11,7 +11,7 @@ const SearchSuggestions = ({ setQuery, onFocus, onBlur }) => {
   };
 
   return (
-    <section className="search__suggestions onStart">
+    <section className="search__suggestions onStartDown">
       <h5 className="search__suggestions--title">
         suggestions based on users interest
       </h5>

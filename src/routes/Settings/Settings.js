@@ -9,13 +9,9 @@ import Currency from "./Currency/Currency";
 import EssentialsContext from "../../context/EssentialsContext.js";
 
 const Settings = (props) => {
-  const {
-    setTrackingItems,
-    endpointApi,
-    setEndpointApi,
-    userPreferences,
-    setUserPreferences,
-  } = useContext(EssentialsContext);
+  const { setTrackingItems, endpointApi, setEndpointApi } = useContext(
+    EssentialsContext
+  );
 
   const [apiInfoToggle, setApiInfoToggle] = useState(false);
   const navigate = useNavigate();
@@ -60,6 +56,8 @@ Leave prompt blank to restore default settings.`,
           />
         </nav>
         <ul className="settings__list">
+          <SizeMetric />
+          <Currency />
           <li>
             <p>
               Backend source.
@@ -93,8 +91,6 @@ Leave prompt blank to restore default settings.`,
               </p>
             </li>
           )}
-          <SizeMetric />
-          <Currency />
           <li>
             <p>Visit author GitHub.</p>
             <a
