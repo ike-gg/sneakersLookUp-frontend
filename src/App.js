@@ -12,6 +12,8 @@ import TrackingItem from "./routes/TrackingItem/TrackingItem";
 
 import EssentialsContext from "./context/EssentialsContext";
 
+import { getExchangeRates } from "./api/apiCalls";
+
 const App = () => {
   const [error, setError] = useState({
     title: "Error",
@@ -43,40 +45,41 @@ const App = () => {
         setState(JSON.parse(storedState));
       }
     });
-
     setLocalStorageLoaded(true);
   }, []);
 
   useEffect(() => {
     if (localStorageLoaded) {
-      const fetchExcangeRates = async () => {
-        try {
-          const response = await fetch(`${endpointApi}/api/getExchangeRates`);
-          const data = await response.json();
-          setCurrencyRates(data);
-        } catch (error) {
-          setError({
-            title: "Error",
-            desc: "Could not load exchange rates, switching to EUR instead.",
+      const fetchExchangeRates = () => {
+        getExchangeRates(endpointApi)
+          .then((data) => {
+            setCurrencyRates(data);
+          })
+          .catch((error) => {
+            setError({
+              title: "Error",
+              desc: "Could not load exchange rates, switching to EUR instead.",
+            });
+            setCurrencyRates({ EUR: "1.00" });
+            setUserPreferences((prevPreferences) => {
+              return {
+                ...prevPreferences,
+                currency: "EUR",
+              };
+            });
           });
-          setCurrencyRates({ EUR: "1.00" });
-          setUserPreferences((prevPreferences) => {
-            return {
-              ...prevPreferences,
-              currency: "EUR",
-            };
-          });
-        }
       };
-      fetchExcangeRates();
-      setInterval(fetchExcangeRates, 1000 * 60 * 10);
+      fetchExchangeRates();
+      setInterval(fetchExchangeRates, 1000 * 60 * 10);
     }
   }, [localStorageLoaded]);
 
   useEffect(() => {
-    localStoredStates.forEach(([nameState, state, setState]) => {
-      localStorage.setItem(nameState, JSON.stringify(state));
-    });
+    if (localStorageLoaded) {
+      localStoredStates.forEach(([nameState, state, setState]) => {
+        localStorage.setItem(nameState, JSON.stringify(state));
+      });
+    }
   }, [trackingItems, endpointApi, userPreferences, currencyRates]);
 
   const EssentialsStates = {
