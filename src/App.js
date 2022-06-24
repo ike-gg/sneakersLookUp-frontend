@@ -12,6 +12,8 @@ import TrackingItem from "./routes/TrackingItem/TrackingItem";
 
 import EssentialsContext from "./context/EssentialsContext";
 
+import staticTrackingItems from "./data/staticTrackingItems.json";
+
 import { getExchangeRates } from "./api/apiCalls";
 
 const App = () => {
@@ -19,12 +21,18 @@ const App = () => {
     title: "Error",
     desc: "",
   });
-  const [trackingItems, setTrackingItems] = useState([]);
+  const [trackingItems, setTrackingItems] = useState(staticTrackingItems);
   const [userPreferences, setUserPreferences] = useState({
     shoeSizeMetric: `US`,
     currency: `EUR`,
   });
-  const [currencyRates, setCurrencyRates] = useState({});
+  const [currencyRates, setCurrencyRates] = useState({
+    CHF: 1.013381,
+    EUR: 1,
+    GBP: 0.859326,
+    PLN: 4.698298,
+    USD: 1.05368,
+  });
   const [endpointApi, setEndpointApi] = useState(
     "https://sneakerslookup-backend.herokuapp.com"
   );
@@ -45,32 +53,37 @@ const App = () => {
         setState(JSON.parse(storedState));
       }
     });
+    setError({
+      title: "😭 😥 😢",
+      desc:
+        "Bad news, the scraper I was using for scraping data from StockX probably passed away. So I have stopped working on further updates. Also, due to the backend is down, I set static exchange rates by today (24.06.2022).",
+    });
     setLocalStorageLoaded(true);
   }, []);
 
   useEffect(() => {
     if (localStorageLoaded) {
-      const fetchExchangeRates = () => {
-        getExchangeRates(endpointApi)
-          .then((data) => {
-            setCurrencyRates(data);
-          })
-          .catch((error) => {
-            setError({
-              title: "Error",
-              desc: "Could not load exchange rates, switching to EUR instead.",
-            });
-            setCurrencyRates({ EUR: "1.00" });
-            setUserPreferences((prevPreferences) => {
-              return {
-                ...prevPreferences,
-                currency: "EUR",
-              };
-            });
-          });
-      };
-      fetchExchangeRates();
-      setInterval(fetchExchangeRates, 1000 * 60 * 10);
+      // const fetchExchangeRates = () => {
+      //   getExchangeRates(endpointApi)
+      //     .then((data) => {
+      //       setCurrencyRates(data);
+      //     })
+      //     .catch((error) => {
+      //       setError({
+      //         title: "Error",
+      //         desc: "Could not load exchange rates, switching to EUR instead.",
+      //       });
+      //       setCurrencyRates({ EUR: "1.00" });
+      //       setUserPreferences((prevPreferences) => {
+      //         return {
+      //           ...prevPreferences,
+      //           currency: "EUR",
+      //         };
+      //       });
+      //     });
+      // };
+      // fetchExchangeRates();
+      // setInterval(fetchExchangeRates, 1000 * 60 * 10);
     }
   }, [localStorageLoaded]);
 

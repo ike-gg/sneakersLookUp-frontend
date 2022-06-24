@@ -66,21 +66,19 @@ const TrackingItem = () => {
               </section>
             )}
             {liveData && (
-              <>
-                <section className="trackingItem__stats">
-                  <h2 className="trackingItem__size">
-                    <i className="uil uil-file-blank" /> Tracking size:{" "}
-                    <div className="label">
-                      {`${size[`size${shoeSizeMetric}`]} ${shoeSizeMetric}`}
-                    </div>
-                    <i className="uil uil-pricetag-alt" /> Retail:{" "}
-                    <div className="label">{retail} €</div>
-                  </h2>
-                  <h3 className="trackingItem__prices">Prices:</h3>
-                  <PriceLabel bid products={[size, liveData]} />
-                  <PriceLabel ask products={[size, liveData]} />
-                </section>
-              </>
+              <section className="trackingItem__stats">
+                <h2 className="trackingItem__size">
+                  <i className="uil uil-file-blank" /> Tracking size:{" "}
+                  <div className="label">
+                    {`${size[`size${shoeSizeMetric}`]} ${shoeSizeMetric}`}
+                  </div>
+                  <i className="uil uil-pricetag-alt" /> Retail:{" "}
+                  <div className="label">{retail} €</div>
+                </h2>
+                <h3 className="trackingItem__prices">Prices:</h3>
+                <PriceLabel bid products={[size, liveData]} />
+                <PriceLabel ask products={[size, liveData]} />
+              </section>
             )}
             <ActionButtons item={currentItem} />
           </section>
