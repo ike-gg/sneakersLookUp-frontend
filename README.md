@@ -2,10 +2,6 @@
 
 # 👉 [Check demo](https://ike-gg.github.io/sneakersLookUp-frontend/)
 
-## 👋💀 Project passed away.
-
-Due to fact, that scraper that I was using to scrape data from StockX just dont work anymore, I decided to end up the project.
-
 ---
 
 Website allows you to search and add items to track from stockx website.
