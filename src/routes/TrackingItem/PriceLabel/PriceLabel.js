@@ -2,9 +2,8 @@ import React from "react";
 
 import "./PriceLabel.css";
 
-const PriceLabel = (props) => {
-  const { bid, ask } = props;
-  const [addOnStatus, liveStatus] = props.products;
+const PriceLabel = ({ bid, ask, products }) => {
+  const [addOnStatus, liveStatus] = products;
 
   let typePrice, addOnPrice, livePrice;
   let classLabelColor, icon;

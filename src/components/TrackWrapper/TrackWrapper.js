@@ -8,8 +8,7 @@ import ProductPreview from "../ProductPreview/ProductPreview";
 import EssentialsContext from "../../context/EssentialsContext";
 
 const TrackComponent = () => {
-  const { trackingItems, userPreferences } = useContext(EssentialsContext);
-  const { shoeSizeMetric } = userPreferences;
+  const { trackingItems } = useContext(EssentialsContext);
 
   return (
     <>

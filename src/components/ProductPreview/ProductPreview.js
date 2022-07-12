@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import "./ProductPreview.css";
 
 import ProductLabel from "./ProductLabel/ProductLabel";
 
 const ProductPreview = ({ product, labelType, fontSize, sticky }) => {
-  const { retail, image, name, seller, colorway, sku } = product;
+  const { image, name, seller, colorway, sku } = product;
 
   let classForContainer;
 

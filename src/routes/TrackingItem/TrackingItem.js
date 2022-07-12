@@ -12,12 +12,9 @@ import EssentialsContext from "../../context/EssentialsContext";
 
 const TrackingItem = () => {
   const navigate = useNavigate();
-  const {
-    trackingItems,
-    setTrackingItems,
-    userPreferences,
-    endpointApi,
-  } = useContext(EssentialsContext);
+  const { trackingItems, userPreferences, endpointApi } = useContext(
+    EssentialsContext
+  );
 
   const { shoeSizeMetric } = userPreferences;
 

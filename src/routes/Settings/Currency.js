@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import EssentialsContext from "../../../context/EssentialsContext";
+import EssentialsContext from "../../context/EssentialsContext";
 
 const Currency = () => {
   const { currencyRates, userPreferences, setUserPreferences } = useContext(
@@ -33,7 +33,7 @@ const Currency = () => {
             {currency}
           </option>
         ))}
-        <option value="EUR">EUR</option>
+        {availableCurrencies.length === 0 && <option value="EUR">EUR</option>}
       </select>
     </li>
   );
