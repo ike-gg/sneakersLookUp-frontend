@@ -33,14 +33,14 @@ const ChangeEndpoint = () => {
             }}
             className="uil uil-info-circle moreInfo"
           />
-          (Current: {endpointApi})
         </p>
         <button className="smallButton" onClick={changeEndpointAPI}>
           Set endpoint <i className="uil uil-link"></i>
         </button>
       </li>
       {apiInfoToggle && (
-        <li className="apiinformation">
+        <li className="apiinformation" style={{ flexDirection: "column" }}>
+          <p className="settings__currentEndpoint">(Current: {endpointApi})</p>
           <p>
             Due to limation of unofficial StockX API its highly possible that my
             free heroku-hosted API will be limited and this could cause the app

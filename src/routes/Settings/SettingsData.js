@@ -15,14 +15,14 @@ const settingsData = [
   },
   {
     key: 3,
-    title: "Report a bug via github issues",
+    title: "Report a bug via github issues.",
     link: "https://github.com/ike-gg/sneakersLookUp-frontend/issues/new",
     icon: "uil uil-external-link-alt",
     button: "Issues",
   },
   {
     key: 4,
-    title: "Be in touch with me",
+    title: "Be in touch with me.",
     link: "mailto:ernestee@icloud.com",
     icon: "uil uil-envelope",
     button: "Send mail",
