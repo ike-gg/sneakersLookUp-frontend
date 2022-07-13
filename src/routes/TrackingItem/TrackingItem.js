@@ -59,7 +59,7 @@ const TrackingItem = () => {
             {!liveData && (
               <section className="trackingItem__fetching">
                 <i className="uil uil-sync spinning"></i>
-                <p>Fetching data..</p>
+                <p>Fetching data...</p>
               </section>
             )}
             {liveData && (
