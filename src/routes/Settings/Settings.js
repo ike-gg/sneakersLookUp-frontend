@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Settings.css";
@@ -11,7 +11,7 @@ import ChangeEndpoint from "./ChangeEndpoint";
 import ClearTrackingItems from "./ClearTrackingItems";
 import SettingsLine from "./SettingsLine";
 
-const Settings = (props) => {
+const Settings = () => {
   const navigate = useNavigate();
 
   const closeSettings = (event) => {

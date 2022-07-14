@@ -10,7 +10,7 @@ import TrackingButton from "./TrackingButton/TrackingButton";
 import EssentialsContext from "../../context/EssentialsContext";
 
 //static data development
-import data from "./static.json";
+// import data from "./static.json";
 
 const SearchComponent = () => {
   const { trackingItems, setTrackingItems } = useContext(EssentialsContext);
@@ -20,8 +20,7 @@ const SearchComponent = () => {
 
   //results of fetching API with query from search state
   const [searchResult, setSearchResult] = useState({
-    status: "found",
-    item: data,
+    status: "init",
   });
 
   const addItemToTracking = () => {

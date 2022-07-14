@@ -6,6 +6,7 @@ import "./style.css";
 import SearchWrapper from "./components/SearchWrapper/SearchWrapper";
 import TrackWrapper from "./components/TrackWrapper/TrackWrapper";
 import ErrorPopUp from "./components/ErrorPopUp/ErrorPopUp";
+import WelcomeWindow from "./components/WelcomeWindow/WelcomeWindow";
 
 import Settings from "./routes/Settings/Settings";
 import TrackingItem from "./routes/TrackingItem/TrackingItem";
@@ -25,6 +26,7 @@ const App = () => {
   const [userPreferences, setUserPreferences] = useState({
     shoeSizeMetric: `US`,
     currency: `EUR`,
+    firstLaunch: true,
   });
   const [currencyRates, setCurrencyRates] = useState({
     CHF: 1.013381,
@@ -34,10 +36,10 @@ const App = () => {
     USD: 1.05368,
   });
   const [endpointApi, setEndpointApi] = useState(
-    "http://sneakerslookupbackend.herokuapp.com/"
+    "http://sneakerslookupbackend.herokuapp.com"
   );
 
-  const [localStorageLoaded, setLocalStorageLoaded] = useState(false);
+  const [localStorageLoaded, setLocalStorageLoaded] = useState();
 
   const localStoredStates = [
     ["trackingItems", trackingItems, setTrackingItems],
@@ -52,10 +54,6 @@ const App = () => {
       if (storedState) {
         setState(JSON.parse(storedState));
       }
-    });
-    setError({
-      title: "😭 😥 😢",
-      desc: "",
     });
     setLocalStorageLoaded(true);
   }, []);
@@ -113,6 +111,7 @@ const App = () => {
             path="/"
             element={
               <section className="container">
+                {userPreferences.firstLaunch && <WelcomeWindow />}
                 <Outlet />
                 <TrackWrapper />
                 <SearchWrapper />
