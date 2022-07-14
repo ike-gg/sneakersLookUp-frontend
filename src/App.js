@@ -36,7 +36,7 @@ const App = () => {
     USD: 1.05368,
   });
   const [endpointApi, setEndpointApi] = useState(
-    "http://sneakerslookupbackend.herokuapp.com"
+    "https://sneakerslookupbackend.herokuapp.com"
   );
 
   const [localStorageLoaded, setLocalStorageLoaded] = useState();

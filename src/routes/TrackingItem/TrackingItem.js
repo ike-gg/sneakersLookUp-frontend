@@ -12,9 +12,12 @@ import EssentialsContext from "../../context/EssentialsContext";
 
 const TrackingItem = () => {
   const navigate = useNavigate();
-  const { trackingItems, userPreferences, endpointApi } = useContext(
-    EssentialsContext
-  );
+  const {
+    trackingItems,
+    userPreferences,
+    endpointApi,
+    currencyRates,
+  } = useContext(EssentialsContext);
 
   const { shoeSizeMetric } = userPreferences;
 
@@ -70,7 +73,12 @@ const TrackingItem = () => {
                     {`${size[`size${shoeSizeMetric}`]} ${shoeSizeMetric}`}
                   </div>
                   <i className="uil uil-pricetag-alt" /> Retail:{" "}
-                  <div className="label">{retail} €</div>
+                  <div className="label">
+                    {(retail * currencyRates[userPreferences.currency]).toFixed(
+                      2
+                    )}{" "}
+                    {userPreferences.currency}
+                  </div>
                 </h2>
                 <h3 className="trackingItem__prices">Prices:</h3>
                 <PriceLabel bid products={[size, liveData]} />

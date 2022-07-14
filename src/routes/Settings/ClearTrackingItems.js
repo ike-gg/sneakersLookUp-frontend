@@ -1,27 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import EssentialsContext from "../../context/EssentialsContext.js";
-
 const ClearTrackingItems = () => {
-  const { setTrackingItems, setUserPreferences } = useContext(
-    EssentialsContext
-  );
-
   const navigate = useNavigate();
 
   const deleteAllAppData = () => {
-    const promptMessage =
-      "Are you sure you want to delete ALL your tracking items?";
+    const promptMessage = "Are you sure you want to delete ALL app data?";
     if (window.confirm(promptMessage)) {
-      setTrackingItems([]);
-      setUserPreferences((prevState) => {
-        return {
-          ...prevState,
-          firstLaunch: true,
-        };
-      });
+      localStorage.clear();
       navigate("/", { replace: true });
+      window.location.reload();
     }
   };
   return (

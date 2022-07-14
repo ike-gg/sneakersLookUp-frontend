@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./PriceLabel.css";
 
+import EssentialsContext from "../../../context/EssentialsContext";
+
 const PriceLabel = ({ bid, ask, products }) => {
   const [addOnStatus, liveStatus] = products;
+
+  const { userPreferences, currencyRates } = useContext(EssentialsContext);
 
   let typePrice, addOnPrice, livePrice;
   let classLabelColor, icon;
@@ -42,12 +46,22 @@ const PriceLabel = ({ bid, ask, products }) => {
       </div>
       <div className="priceLabel__addOn">
         <i className="uil uil-bookmark" />
-        Add-on price: {addOnPrice ? `${addOnPrice} €` : "—"}
+        Add-on price:{" "}
+        {addOnPrice
+          ? `${(addOnPrice * currencyRates[userPreferences.currency]).toFixed(
+              2
+            )} ${userPreferences.currency}`
+          : "—"}
       </div>
       <div className={`${classLabelColor} priceLabel__live`}>
         {icon === "up" && <i className="uil uil-arrow-growth" />}
         {icon === "down" && <i className="uil uil-chart-down" />}
-        Live price: {livePrice ? `${livePrice} €` : "—"}
+        Live price:{" "}
+        {livePrice
+          ? `${(livePrice * currencyRates[userPreferences.currency]).toFixed(
+              2
+            )} ${userPreferences.currency}`
+          : "—"}
       </div>
     </div>
   );
