@@ -15,7 +15,7 @@
   border-radius: 20px;
   width: 50vw;
   max-width: 800px;
-  overflow: scroll;
+  overflow: auto;
   max-height: 90vh;
 }
 .welcome__title {
