@@ -1,5 +1,7 @@
 # 👟 SneakersLookUp (Frontend)
 
+![banner](https://i.imgur.com/4lRSFOZ.png)
+
 # 👉 [Check demo](https://ike-gg.github.io/sneakersLookUp-frontend/)
 
 Website allows you to search and add items to track from stockx website.
