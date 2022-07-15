@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "662d08c0642a07cb8a0b",
-    "url": "/sneakersLookUp-frontend/static/css/main.b0b9b68b.chunk.css"
+    "revision": "fb357aab59946f3653e3",
+    "url": "/sneakersLookUp-frontend/static/css/main.c03725dd.chunk.css"
   },
   {
-    "revision": "662d08c0642a07cb8a0b",
-    "url": "/sneakersLookUp-frontend/static/js/main.662d08c0.chunk.js"
+    "revision": "fb357aab59946f3653e3",
+    "url": "/sneakersLookUp-frontend/static/js/main.fb357aab.chunk.js"
   },
   {
     "revision": "efc81b0773c2b65615b6",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/sneakersLookUp-frontend/static/js/runtime~main.d2ef250a.js"
   },
   {
-    "revision": "d4bf9e2cbf7b657fc0f5a9510d1dc685",
+    "revision": "4ba7d8d0b28438eadb49811356ff10e1",
     "url": "/sneakersLookUp-frontend/index.html"
   }
 ];

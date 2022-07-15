@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/sneakersLookUp-frontend/precache-manifest.65949072ffd60656f53faa3479398944.js"
+  "/sneakersLookUp-frontend/precache-manifest.5f295f1296b13a5476990a6c1666d4e7.js"
 );
 
 workbox.clientsClaim();
