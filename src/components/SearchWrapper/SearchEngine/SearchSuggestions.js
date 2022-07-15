@@ -7,7 +7,7 @@ import UserInterest from "./UsersInterest";
 const SearchSuggestions = ({ setQuery, onFocus, onBlur }) => {
   const addToQuery = (event) => {
     const { textContent } = event.target;
-    setQuery((prevQuery) => prevQuery + textContent + " ");
+    setQuery(`${textContent} `);
   };
 
   return (

@@ -36,7 +36,13 @@ const SearchEngine = ({ setSearchResult }) => {
       fetch(`${endpointApi}/api/getProduct/?q=${debounceQuery}`)
         .then((response) => response.json())
         .then((data) => {
-          handleResponse(data);
+          if ("image" in data) {
+            handleResponse(data);
+          } else {
+            setSearchResult({
+              status: "error403",
+            });
+          }
         })
         .catch((error) => {
           console.error(error);
@@ -68,7 +74,7 @@ const SearchEngine = ({ setSearchResult }) => {
       onMouseLeave={onBlur}
     >
       <input
-        type="text"
+        type="search"
         className="searchComponent__input"
         placeholder="🔍 Search for sneakers, model, color or even sku!"
         value={query}

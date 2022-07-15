@@ -23,6 +23,10 @@ const statuses = {
     icon: <i className="uil uil-search-alt searchStatus__icon" />,
     text: `Feel free to find your sneakers using search box above.`,
   },
+  error403: {
+    icon: <i className="uil uil-exclamation-triangle searchStatus__icon" />,
+    text: `API responded with 403 code. Please try again in a while.`,
+  },
   error: {
     icon: <i className="uil uil-exclamation-triangle searchStatus__icon" />,
     text: (
