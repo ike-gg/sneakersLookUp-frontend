@@ -16,12 +16,14 @@
   border-radius: 6px;
   color: rgb(105, 105, 105);
   background-color: rgb(247, 247, 247);
+  text-align: center;
 }
 .priceLabel__live {
   padding: 7px 15px;
   border-radius: 6px;
   color: rgb(105, 105, 105);
   background-color: rgb(247, 247, 247);
+  text-align: center;
 }
 .priceLabel i {
   margin-right: 5px;
