@@ -4,8 +4,8 @@
 
 # 👉 [Check demo](https://ike-gg.github.io/sneakersLookUp-frontend/)
 
-Website allows to search and add items to track from StockX website.
-App uses API that i wrote myself [(repo here)](https://github.com/ike-gg/sneakersLookUp-backend).
+App allows you to search for and add items to track from the StockX website. 
+Application uses a simple API that I wrote myself [(repo here)](https://github.com/ike-gg/sneakersLookUp-backend).
 
 Everything was written using React & React Router
 
