@@ -4,6 +4,8 @@
 
 # 👉 [Check demo](https://ike-gg.github.io/sneakersLookUp-frontend/)
 
+need to update backend
+
 App allows you to search for and add items to track from the StockX website. 
 Application uses a simple API that I wrote myself [(repo here)](https://github.com/ike-gg/sneakersLookUp-backend).
 
